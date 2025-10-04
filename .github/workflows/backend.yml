@@ -30,15 +30,15 @@ jobs:
 
       - name: Run tests
         working-directory: backend
-        run: mvn test
+        run: mvn test -Dversion.application=${VERSION}.${GITHUB_SHA:0:7}
 
       - name: Run Checkstyle
         working-directory: backend
-        run: mvn checkstyle:checkstyle
+        run: mvn checkstyle:checkstyle -Dversion.application=${VERSION}.${GITHUB_SHA:0:7}
 
       - name: Run Spotbugs
         working-directory: backend
-        run: mvn spotbugs:check
+        run: mvn spotbugs:check -Dversion.application=${VERSION}.${GITHUB_SHA:0:7}
         continue-on-error: true
 
       - name: Upload Artifact
